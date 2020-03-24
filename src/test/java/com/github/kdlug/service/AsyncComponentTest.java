@@ -37,4 +37,13 @@ class AsyncComponentTest {
             Thread.sleep(1000);
         }
     }
+
+    @Test
+    void shouldRunMethodAsyncWithConfiguredExecutor() throws InterruptedException {
+        System.out.println("Start - invoking an asynchronous method with configured executor. " + Thread.currentThread().getName());
+        asyncComponent.asyncMethodWithConfiguredExecutor();
+        Thread.sleep(2000);
+        System.out.println("End - invoking an asynchronous method with configured executor.  ");
+    }
+
 }

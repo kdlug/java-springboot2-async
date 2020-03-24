@@ -28,4 +28,10 @@ public class AsyncComponent {
         return null;
     }
 
+    @Async("threadPoolTaskExecutor")
+    public void asyncMethodWithConfiguredExecutor() {
+        System.out.println("Execute method with configured executor - "
+                + Thread.currentThread().getName());
+    }
+
 }
