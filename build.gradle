@@ -16,4 +16,26 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation('org.junit.jupiter:junit-jupiter-api:5.3.1')
+    testImplementation('org.junit.jupiter:junit-jupiter-params:5.3.1')
+    testImplementation('org.mockito:mockito-core:2.25.1')
+    testImplementation('org.mockito:mockito-junit-jupiter:2.25.1')
+    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.3.1')
+}
+
+test {
+    useJUnitPlatform()
+    //failFast = true
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+    afterSuite { desc, result ->
+        if (!desc.parent) {
+            println "\nTest result: ${result.resultType}"
+            println "Test summary: ${result.testCount} tests, " +
+                    "${result.successfulTestCount} succeeded, " +
+                    "${result.failedTestCount} failed, " +
+                    "${result.skippedTestCount} skipped"
+        }
+    }
 }

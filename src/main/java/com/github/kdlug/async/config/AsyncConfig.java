@@ -1,5 +1,7 @@
 package com.github.kdlug.async.config;
 
+import com.github.kdlug.async.AsyncExceptionHandler;
+import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.AsyncConfigurer;
@@ -23,5 +25,10 @@ public class AsyncConfig implements AsyncConfigurer {
         executor.initialize();
 
         return executor;
+    }
+
+    @Override
+    public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
+        return new AsyncExceptionHandler();
     }
 }

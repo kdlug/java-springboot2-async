@@ -34,4 +34,8 @@ public class AsyncComponent {
                 + Thread.currentThread().getName());
     }
 
+    @Async
+    public void asyncMethodWithException() throws Exception {
+        throw new Exception("Throw message from asynchronous method. ");
+    }
 }

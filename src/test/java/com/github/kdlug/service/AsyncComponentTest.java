@@ -23,7 +23,7 @@ class AsyncComponentTest {
     }
 
     @Test
-    void shouldRunMethodAsyncWithReturnType() throws InterruptedException, ExecutionException {
+    void shouldRunMethodAsyncWithReturnType() throws Exception {
         System.out.println("Invoking an asynchronous method. "
                 + Thread.currentThread().getName());
         Future<String> future = asyncComponent.asyncMethodWithReturnType();
@@ -46,4 +46,11 @@ class AsyncComponentTest {
         System.out.println("End - invoking an asynchronous method with configured executor.  ");
     }
 
+    @Test
+    public void testAsyncMethodsWithException() throws Exception {
+        System.out.println("Start - invoking an asynchronous method with exception. ");
+        asyncComponent.asyncMethodWithException();
+        System.out.println("End - invoking an asynchronous method with exception. ");
+        Thread.sleep(2000);
+    }
 }
